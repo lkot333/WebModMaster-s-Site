@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odtwarzacz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1><a href="index.html" style="color:red;text-decoration:none;">← Back</a></h1>
+</header>
+
+<main id="content">
+  <video id="player" controls autoplay style="display:none;"></video>
+  <h2 id="title"></h2>
+</main>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+const film = params.get("play");
+
+// Ta sama lista tokenów co w script.js
+const validTokens = [
+  "4754dfhyk54tu5",
+  "gf48dk39fk48dk2",
+  "p9q2z8h5l0x3",
+  "u39fk4g8l3p2a9",
+  "abc123xyz789"
+];
+
+if (validTokens.includes(token) && film) {
+  const video = document.getElementById("player");
+  const title = document.getElementById("title");
+
+  video.src = `mods/${mod}.jar`;
+  title.innerText = film;
+  video.style.display = "block";
+} else {
+  document.getElementById("content").innerHTML = `
+    <h2 style="color:red;">❌ Nieprawidłowy token dostępu,  brak modu lub zablokowano tokenem blocked!</h2>
+    <p>Spróbuj wrócić na <a href='index.html' style="color:lightblue;">stronę główną</a>.</p>
+  `;
+}
+</script>
+</body>
+</html>
