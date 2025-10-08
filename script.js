@@ -10,5 +10,5 @@ const validTokens = [
 // Funkcja otwierająca film z losowym tokenem
 function openVideo(name) {
   const token = validTokens[Math.floor(Math.random() * validTokens.length)];
-  location.href = `watch.html?token=${token}&mod=${encodeURIComponent(name)}`;
+  location.href = `mod.html?token=${token}&mod=${encodeURIComponent(name)}`;
 }
